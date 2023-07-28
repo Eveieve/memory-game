@@ -1,4 +1,4 @@
-import cardsData from '../data/cards.json';
+import cardsData from '../data/cards';
 
 function Cards() {
   // const { cards } = cardsData;
