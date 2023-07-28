@@ -1,11 +1,12 @@
 import cardsData from '../data/cards';
 
 function Cards() {
-  // const { cards } = cardsData;
+  // render cardsData array => to items
+  // div is each card
 
-  console.log(cardsData);
-  const [{ name, src }] = [cardsData];
-  console.log({ name, src });
+  const renderedCards = cardsData.map((card) => <div key={card.id}>{card.name}</div>);
+
+  return renderedCards;
 }
 
 export default Cards;
