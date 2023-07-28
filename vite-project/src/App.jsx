@@ -5,14 +5,14 @@ import { useState } from 'react';
 function App() {
   const [currentScore, setCurrentScore] = useState(0);
 
-  function handleScore(isNotClicked) {
-    // if not clicked, update the score
-    if (isNotClicked) {
-      setCurrentScore(currentScore + 1);
-      console.log('Update Score!');
-    } else {
+  function handleScore(isClicked) {
+    // if already clicked, end game
+    if (isClicked) {
       // endgame
       return;
+    } else {
+      setCurrentScore(currentScore + 1);
+      console.log('Update Score!');
     }
   }
 
