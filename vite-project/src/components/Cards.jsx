@@ -7,11 +7,12 @@ function Cards() {
 
   const renderedCards = cardsData.map((card) => (
     <div className="card" key={card.id}>
-      {card.name}
+      <img src={`public/assets/img/${card.src}`} alt={card.name} />
+      <p>{card.name}</p>
     </div>
   ));
 
-  return renderedCards;
+  return <div className="cards-container">{renderedCards}</div>;
 }
 
 export default Cards;

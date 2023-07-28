@@ -1,3 +1,13 @@
+.cards-container {
+    display: flex;
+}
+
 .card {
     background-color: pink;
+   
 }
+
+.card img {
+    width: 3rem;
+}
+
