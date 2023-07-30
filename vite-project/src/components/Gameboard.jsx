@@ -2,11 +2,11 @@
 // Gameboard shows the current score and the best score
 import '../styles/Gameboard.css';
 
-function Gameboard() {
+function Gameboard({ score, bestScore }) {
   return (
     <div className="gameboard-container">
-      <div className="current-score">Current Score</div>
-      <div className="best-score">Best Score</div>
+      <div className="current-score">Current Score: {score}</div>
+      <div className="best-score">Best Score: {bestScore}</div>
     </div>
   );
 }
