@@ -27,7 +27,7 @@ function Cards({ handleScore }) {
 
   const renderedCards = cardsData.map((card) => (
     <CardItem
-      src={`public/assets/img/${card.src}`}
+      src={`src/assets/img/${card.src}`}
       key={card.id}
       name={card.name}
       onClick={handleScore}
