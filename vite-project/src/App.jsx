@@ -12,11 +12,16 @@ function App() {
   const [currentScore, setScore] = useState(0);
 
   // handles SingleCard click
-  function handleClick() {
-    //when the card is clicked and it's never been clicked,
+  function handleClick(e) {
+    //when the card is clicked
+    // AND when it's never been clicked
     // increment the currentScore by 1.
-    setScore(currentScore + 1);
-    console.log(currentScore);
+
+    if (e.target.dataset.isclicked === 'false') {
+      setScore(currentScore + 1);
+      console.log(currentScore);
+      e.target.dataset.isclicked = 'true';
+    }
   }
 
   return (
