@@ -1,12 +1,9 @@
 /* eslint-disable react/prop-types */
 import cardsData from '../data/cards';
 import '../styles/Cards.css';
-//import Gameboard from './Gameboard';/
 import SingleCard from './SingleCard';
 
 function Cards({ handleClick }) {
-
-
   const renderedCards = cardsData.map((card) => (
     <SingleCard
       src={`src/assets/img/${card.src}`}
@@ -18,7 +15,11 @@ function Cards({ handleClick }) {
     ></SingleCard>
   ));
 
-  return <div className="cards-container">{renderedCards}</div>;
+  return (
+    <>
+      <div className="cards-container">{renderedCards}</div>);
+    </>
+  );
 }
 
 export default Cards;

@@ -2,12 +2,9 @@
 import '../styles/Cards.css';
 
 function SingleCard({ src, alt, name, handleClick }) {
-  const updateScore = (id) => {
-    handleClick(id);
-  };
   return (
     <>
-      <div className="card" onClick={updateScore}>
+      <div className="card" onClick={handleClick}>
         <img src={src} alt={alt} />
         <p>{name}</p>
       </div>
