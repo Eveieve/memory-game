@@ -16,12 +16,26 @@ function App() {
     //when the card is clicked
     // AND when it's never been clicked
     // increment the currentScore by 1.
-
+    console.log(e.target.name);
     if (e.target.dataset.isclicked === 'false') {
       setScore(currentScore + 1);
       console.log(currentScore);
       e.target.dataset.isclicked = 'true';
     }
+
+    // mix cards after each click
+    shuffleArray(cardsData);
+  }
+
+  // returns randomized array
+  function shuffleArray(array) {
+    let newArr = [...array];
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+
+    return newArr;
   }
 
   return (
