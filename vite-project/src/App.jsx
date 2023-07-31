@@ -1,26 +1,21 @@
+/* eslint-disable no-unused-vars */
 import Cards from './components/Cards.jsx';
-import Gameboard from './components/Gameboard.jsx';
+import Scoreboard from './components/Scoreboard.jsx';
 import { useState } from 'react';
+import cardsData from './data/cards.js';
 
 function App() {
-  const [currentScore, setCurrentScore] = useState(0);
+  const [currentScore, setScore] = useState(0);
+const [cards, setCards] = useState(cardsData);
+console.log(cards);
+console.log(setCards);
 
-  function handleScore(isClicked) {
-    // if already clicked, end game
-    if (isClicked) {
-      // endgame
-      return;
-    } else {
-      setCurrentScore(currentScore + 1);
-      console.log('Update Score!');
-    }
-  }
 
   return (
     <header className="header">
       <h1>Adventure Time Memory Game</h1>
-      <Gameboard />
-      <Cards handleScore={handleScore} />
+      <Scoreboard currentScore={currentScore} setScore={setScore}/>
+      <Cards currentScore = {currentScore} setScore = {setScore} />
     </header>
   );
 }
