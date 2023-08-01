@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
 import '../styles/Cards.css';
 
-function SingleCard({ src, alt, name, handleClick, isClicked }) {
+function SingleCard({ singleCard, id, onClick }) {
   // console.log(isClicked);
+  function updateScore() {
+    onClick(id);
+  }
   return (
     <>
-      <div className="card" onClick={handleClick} data-isclicked={isClicked}>
-        <img src={src} alt={alt} />
-        <p>{name}</p>
+      <div className="card" onClick={updateScore}>
+        <img src={`src/assets/img/${singleCard.src}`} alt={singleCard.alt} />
+        <p>{singleCard.name}</p>
       </div>
     </>
   );

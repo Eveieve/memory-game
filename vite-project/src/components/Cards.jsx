@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
-import cardsData from '../data/cards';
+// import cardsData from '../data/cards';
 import '../styles/Cards.css';
 import SingleCard from './SingleCard';
 
-function Cards({ handleClick }) {
-  const renderedCards = cardsData.map((card) => (
+function Cards({ cards, onClick }) {
+  const renderedCards = cards.map((card) => (
     <SingleCard
-      src={`src/assets/img/${card.src}`}
+      cards={cards}
+      id={card.id}
       key={card.id}
       name={card.name}
-      handleClick={handleClick}
+      onClick={onClick}
       isClicked={card.isClicked}
-      alt={card.name}
+      singleCard={card}
     ></SingleCard>
   ));
 
