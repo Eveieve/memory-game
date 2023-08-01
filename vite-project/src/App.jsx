@@ -3,7 +3,7 @@ import Cards from './components/Cards.jsx';
 import Scoreboard from './components/Scoreboard.jsx';
 import { useState } from 'react';
 import cardsData from './data/cards.js';
-import shuffleArray from './utils/shuffle-cards.js';
+import { shuffleArray, resetCards } from './utils/utils.js';
 
 function App() {
   const [cards, setCards] = useState(cardsData);
@@ -27,9 +27,6 @@ function App() {
       setCurrentScore(0);
       resetCards(cards);
     }
-  }
-  function resetCards(cards) {
-    return cards.forEach((card) => (card.isClicked = false));
   }
 
   return (

@@ -1,5 +1,5 @@
 // returns randomized array
-function shuffleArray(array) {
+export function shuffleArray(array) {
   let newArr = [...array];
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -9,4 +9,6 @@ function shuffleArray(array) {
   return newArr;
 }
 
-export default shuffleArray;
+export function resetCards(cards) {
+  return cards.forEach((card) => (card.isClicked = false));
+}
