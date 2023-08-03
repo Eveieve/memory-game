@@ -3,7 +3,7 @@ import Cards from './components/Cards/Cards.jsx';
 import Scoreboard from './components/Scoreboard/Scoreboard.jsx';
 import { useState, useEffect } from 'react';
 import { shuffleArray } from './utils/utils.js';
-
+import './App.css';
 function App() {
   const [fetchedCards, setFetchedCards] = useState();
   const [currentScore, setCurrentScore] = useState(0);
@@ -43,11 +43,13 @@ function App() {
   }
 
   return (
-    <header className="header">
-      <h1>Adventure Time Memory Game</h1>
-      <Scoreboard currentScore={currentScore} bestScore={bestScore} />
-      <Cards cards={fetchedCards} onClick={handleClick} />
-    </header>
+    <>
+      <div className="entire-app">
+        <h1>Adventure Time Memory Game</h1>
+        <Scoreboard currentScore={currentScore} bestScore={bestScore} />
+        <Cards cards={fetchedCards} onClick={handleClick} />
+      </div>
+    </>
   );
 }
 

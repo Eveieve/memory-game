@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import './SingleCard.css';
 
 function SingleCard({ singleCard, id, onClick, src }) {
   // Redefine handler for a click event using the passed down id
@@ -10,7 +11,7 @@ function SingleCard({ singleCard, id, onClick, src }) {
     <>
       <div className="card" onClick={updateScore}>
         <img src={src} alt={singleCard.title} />
-        <p>{singleCard.title.replace('GIF', '')}</p>
+        <p className="card-name">{singleCard.title.replace('GIF', '')}</p>
       </div>
     </>
   );

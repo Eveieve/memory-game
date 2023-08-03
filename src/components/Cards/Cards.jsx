@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 // import cardsData from '../data/cards';
 import './cards.css';
+
 import SingleCard from '../Singlecard/SingleCard';
 
 function Cards({ cards, onClick }) {
