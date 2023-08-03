@@ -1,18 +1,24 @@
+*, 
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 .cards-container {
     display: grid;
     width: 100%;
     grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
     background-color: pink;
     padding: 3rem;
+    border-radius: 1rem;
+   gap: 1rem;
 }
 
 .card {
     display: grid;
-
 }
 
 .card img {
-    width: 100%;
-    
+    width: 95%;
+    height: 13rem;
 }
 
