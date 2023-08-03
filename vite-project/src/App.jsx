@@ -36,15 +36,18 @@ function App() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(
-      "https://api.giphy.com/v1/gifs/search?api_key=7xX8bIMXFLppXyF7Kk7gpIM95xIHnZQK&q=cats&limit=5, { mode: 'cors' }",
-    )
+    fetch('https://api.giphy.com/v1/gifs/search?api_key=7xX8bIMXFLppXyF7Kk7gpIM95xIHnZQK&q=adventure time&limit=5', {
+      mode: 'cors',
+    })
       .then((res) => res.json())
       .then((data) => setFetchedCards(data));
   }, [id]);
 
   if (fetchedCards === undefined) {
     return <>Still loading</>;
+  } else {
+    console.log(fetchedCards.data);
+    fetchedCards.data.forEach((card) => (card.isClicked = false));
   }
 
   return (
