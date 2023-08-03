@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 import Cards from './components/Cards.jsx';
 import Scoreboard from './components/Scoreboard.jsx';
-import { useState } from 'react';
-import cardsData from './data/cards.js';
+import { useState, useEffect } from 'react';
 import { shuffleArray, resetCards } from './utils/utils.js';
 
 function App() {
@@ -54,27 +53,6 @@ function App() {
       }
     }
   }
-  // function fetchData()
-  const [fetchedCards, setFetchedCards] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        "https://api.giphy.com/v1/gifs/search?api_key=7xX8bIMXFLppXyF7Kk7gpIM95xIHnZQK&q=cats&limit=5, { mode: 'cors' }",
-      );
-      const fetchedCards = await response.json();
-      console.log(fetchedCards);
-      const { data: extractedData } = fetchedCards;
-
-      extractedData.forEach((card) => (card.isClicked = false));
-      const { images } = extractedData;
-      console.log(images);
-
-      setFetchedCards(fetchedCards);
-    }
-    fetchData();
-  }, []);
-
-  //console.log(fetchData());
 
   return (
     <header className="header">
