@@ -4,7 +4,6 @@ import '../styles/Cards.css';
 import SingleCard from './SingleCard';
 
 function Cards({ cards, onClick }) {
-  console.log(cards);
   const renderedCards = cards.data.map((card) => (
     <SingleCard
       cards={cards}
