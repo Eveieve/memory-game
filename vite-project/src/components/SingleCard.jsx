@@ -10,7 +10,7 @@ function SingleCard({ singleCard, id, onClick, src }) {
     <>
       <div className="card" onClick={updateScore}>
         <img src={src} alt={singleCard.title} />
-        <p>{singleCard.title}</p>
+        <p>{singleCard.title.replace('GIF', '')}</p>
       </div>
     </>
   );
