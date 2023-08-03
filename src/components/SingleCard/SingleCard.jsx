@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import '../styles/Cards.css';
 
 function SingleCard({ singleCard, id, onClick, src }) {
-  // console.log(isClicked);
+  // Redefine handler for a click event using the passed down id
   function updateScore() {
     onClick(id);
   }
+
   return (
     <>
       <div className="card" onClick={updateScore}>

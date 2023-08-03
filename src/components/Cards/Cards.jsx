@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 // import cardsData from '../data/cards';
-import '../styles/Cards.css';
-import SingleCard from './SingleCard';
+import './cards.css';
+import SingleCard from '../Singlecard/SingleCard';
 
 function Cards({ cards, onClick }) {
   const renderedCards = cards.data.map((card) => (
@@ -19,7 +19,7 @@ function Cards({ cards, onClick }) {
 
   return (
     <>
-      <div className="cards-container">{renderedCards}</div>);
+      <div className="cards-container">{renderedCards}</div>
     </>
   );
 }

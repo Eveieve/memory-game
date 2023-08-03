@@ -1,0 +1,28 @@
+:root {
+    --ff-primary: 'Playfair Display', serif;
+    --ff-secondary: "Roboto", sans-serif;
+
+    --fw-reg: 300;
+    --fw-bold: 900;
+
+    --clr-primary: #6E85B7;
+    --clr-secondary: #fff;
+    --clr-accent:  #98b9ff;
+
+    --fs-h1:3rem;
+    --fs-h2: 2.25em;
+    --fs-h3: 1.25em;
+    --fs-body: 1em;
+
+    /* Increase realism of shadow  */
+    --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
+    0.125em 0.125em 0.25em rgba(0,0,0, .15);
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+}

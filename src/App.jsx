@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import Cards from './components/Cards.jsx';
-import Scoreboard from './components/Scoreboard.jsx';
+import Cards from './components/Cards/Cards.jsx';
+import Scoreboard from './components/Scoreboard/Scoreboard.jsx';
 import { useState, useEffect } from 'react';
-import { shuffleArray, resetCards } from './utils/utils.js';
+import { shuffleArray } from './utils/utils.js';
 
 function App() {
   const [fetchedCards, setFetchedCards] = useState();
@@ -16,23 +16,12 @@ function App() {
       mode: 'cors',
     })
       .then((res) => res.json())
-      .then((obj) => setFetchedCards(obj));
+      .then((data) => setFetchedCards(data));
   }, [isGameReset]);
 
-  // if (fetchedCards) {
-
-  // }
   if (!fetchedCards) {
     return <>Loading...</>;
   }
-  //console.log(fetchedCards.data);
-  // loop through the array and check!
-
-  // setFetchedCards((prevState) => {
-  //   console.log('hi');
-  //   console.log(prevState);
-  //   prevState.data.map((card) => (card.isClicked = false));
-  // });
 
   function handleClick(clickedId) {
     const clickedCard = fetchedCards.data.find((card) => card.id === clickedId);
@@ -46,7 +35,6 @@ function App() {
         setGameReset((prevState) => !prevState);
         setBestScore(currentScore);
         setCurrentScore(0);
-        //resetCards(fetchedCards.data);
       } else {
         setGameReset((prevState) => !prevState);
         setCurrentScore(0);
