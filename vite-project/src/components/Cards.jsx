@@ -4,7 +4,8 @@ import '../styles/Cards.css';
 import SingleCard from './SingleCard';
 
 function Cards({ cards, onClick }) {
-  const renderedCards = cards.map((card) => (
+  console.log(cards);
+  const renderedCards = cards.data.map((card) => (
     <SingleCard
       cards={cards}
       id={card.id}
@@ -13,6 +14,7 @@ function Cards({ cards, onClick }) {
       onClick={onClick}
       isClicked={card.isClicked}
       singleCard={card}
+      src={card.images.original.url}
     ></SingleCard>
   ));
 

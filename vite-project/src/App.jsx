@@ -4,6 +4,7 @@ import Scoreboard from './components/Scoreboard.jsx';
 import { useState, useEffect } from 'react';
 import cardsData from './data/cards.js';
 import { shuffleArray, resetCards } from './utils/utils.js';
+import { useParams } from 'react-router-dom';
 
 function App() {
   const [cards, setCards] = useState(cardsData);
@@ -29,30 +30,28 @@ function App() {
     }
   }
   // function fetchData()
-  const [fetchedCards, setFetchedCards] = useState([]);
+  const [fetchedCards, setFetchedCards] = useState();
+  //const [isLoading, setIsLoading] = useState(true);
+
+  const { id } = useParams();
+
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        "https://api.giphy.com/v1/gifs/search?api_key=7xX8bIMXFLppXyF7Kk7gpIM95xIHnZQK&q=cats&limit=5, { mode: 'cors' }",
-      );
-      const fetchedCards = await response.json();
-      console.log(fetchedCards);
-      const { data: extractedData } = fetchedCards;
+    fetch(
+      "https://api.giphy.com/v1/gifs/search?api_key=7xX8bIMXFLppXyF7Kk7gpIM95xIHnZQK&q=cats&limit=5, { mode: 'cors' }",
+    )
+      .then((res) => res.json())
+      .then((data) => setFetchedCards(data));
+  }, [id]);
 
-      extractedData.forEach((card) => (card.isClicked = false));
-
-      setFetchedCards(fetchedCards);
-    }
-    fetchData();
-  }, []);
-
-  //console.log(fetchData());
+  if (fetchedCards === undefined) {
+    return <>Still loading</>;
+  }
 
   return (
     <header className="header">
       <h1>Adventure Time Memory Game</h1>
       <Scoreboard currentScore={currentScore} setCurrentScore={setCurrentScore} bestScore={bestScore} />
-      <Cards cards={cards} currentScore={currentScore} setCurrentScore={setCurrentScore} onClick={handleClick} />
+      <Cards cards={fetchedCards} currentScore={currentScore} setCurrentScore={setCurrentScore} onClick={handleClick} />
     </header>
   );
 }

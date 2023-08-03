@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import '../styles/Cards.css';
 
-function SingleCard({ singleCard, id, onClick }) {
+function SingleCard({ singleCard, id, onClick, src }) {
   // console.log(isClicked);
   function updateScore() {
     onClick(id);
@@ -9,8 +9,8 @@ function SingleCard({ singleCard, id, onClick }) {
   return (
     <>
       <div className="card" onClick={updateScore}>
-        <img src={`src/assets/img/${singleCard.src}`} alt={singleCard.alt} />
-        <p>{singleCard.name}</p>
+        <img src={src} alt={singleCard.title} />
+        <p>{singleCard.title}</p>
       </div>
     </>
   );
