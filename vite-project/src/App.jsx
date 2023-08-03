@@ -7,32 +7,12 @@ import { shuffleArray, resetCards } from './utils/utils.js';
 import { useParams } from 'react-router-dom';
 
 function App() {
-  const [cards, setCards] = useState(cardsData);
+  const [fetchedCards, setFetchedCards] = useState();
+  //const [cards, setCards] = useState(cardsData);
 
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   // handles SingleCard click
-
-  // loop through the array and check!
-  function handleClick(clickedId) {
-    console.log(cards);
-
-    const clickedCard = cards.find((card) => card.id === clickedId);
-
-    if (clickedCard && clickedCard.isClicked === false) {
-      setCurrentScore(currentScore + 1);
-      clickedCard.isClicked = true;
-      shuffleArray(cards);
-    } else if (clickedCard.isClicked === true) {
-      if (currentScore >= bestScore) setBestScore(currentScore);
-      setCurrentScore(0);
-      resetCards(cards);
-    }
-  }
-  // function fetchData()
-  const [fetchedCards, setFetchedCards] = useState();
-  //const [isLoading, setIsLoading] = useState(true);
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -49,6 +29,25 @@ function App() {
     console.log(fetchedCards.data);
     fetchedCards.data.forEach((card) => (card.isClicked = false));
   }
+  // loop through the array and check!
+  function handleClick(clickedId) {
+    console.log(fetchedCards.data);
+
+    const clickedCard = fetchedCards.data.find((card) => card.id === clickedId);
+
+    if (clickedCard && clickedCard.isClicked === false) {
+      setCurrentScore(currentScore + 1);
+      clickedCard.isClicked = true;
+      shuffleArray(fetchedCards.data);
+    } else if (clickedCard.isClicked === true) {
+      if (currentScore >= bestScore) setBestScore(currentScore);
+      setCurrentScore(0);
+      resetCards(fetchedCards.data);
+    }
+  }
+  // function fetchData()
+
+  //const [isLoading, setIsLoading] = useState(true);
 
   return (
     <header className="header">
