@@ -40,17 +40,16 @@ function App() {
     if (clickedCard && clickedCard.isClicked === undefined) {
       setCurrentScore(() => currentScore + 1);
       clickedCard.isClicked = true;
-      //console.log(clickedCard.isClicked);
       shuffleArray(fetchedCards.data);
     } else if (clickedCard && clickedCard.isClicked === true) {
       if (currentScore >= bestScore) {
+        setGameReset((prevState) => !prevState);
         setBestScore(currentScore);
         setCurrentScore(0);
         //resetCards(fetchedCards.data);
-        setGameReset(true);
       } else {
+        setGameReset((prevState) => !prevState);
         setCurrentScore(0);
-        setGameReset(true);
       }
     }
   }
