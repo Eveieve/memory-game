@@ -9,46 +9,48 @@ function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
 
+  const [isGameReset, setGameReset] = useState(false);
+  // component renders first, then useEffect runs, setting the fetchedCards
   useEffect(() => {
     fetch('https://api.giphy.com/v1/gifs/search?api_key=7xX8bIMXFLppXyF7Kk7gpIM95xIHnZQK&q=adventure time&limit=10', {
       mode: 'cors',
     })
       .then((res) => res.json())
-      .then((data) => setFetchedCards(data));
+      .then((obj) => setFetchedCards(obj));
+  }, [isGameReset]);
 
-    //console.log(fetchedCards.data);
-  }, []);
+  // if (fetchedCards) {
 
-  // async function fetchData() {
-  //  const response = await  fetch('https://api.giphy.com/v1/gifs/search?api_key=7xX8bIMXFLppXyF7Kk7gpIM95xIHnZQK&q=adventure time&limit=10', {
-  //   mode: 'cors',
-  // })
-  // const data = response.json();
-  // return data;
   // }
-
-  if (fetchedCards === undefined) {
-    return <>Still loading</>;
+  if (!fetchedCards) {
+    return <>Loading...</>;
   }
-
+  //console.log(fetchedCards.data);
   // loop through the array and check!
+
+  // setFetchedCards((prevState) => {
+  //   console.log('hi');
+  //   console.log(prevState);
+  //   prevState.data.map((card) => (card.isClicked = false));
+  // });
+
   function handleClick(clickedId) {
     const clickedCard = fetchedCards.data.find((card) => card.id === clickedId);
 
-    if (clickedCard && clickedCard.isClicked === false) {
+    if (clickedCard && clickedCard.isClicked === undefined) {
       setCurrentScore(() => currentScore + 1);
       clickedCard.isClicked = true;
-      console.log(clickedCard.isClicked);
+      //console.log(clickedCard.isClicked);
       shuffleArray(fetchedCards.data);
-      console.log(fetchedCards.data);
-    } else if (clickedCard.isClicked === true) {
+    } else if (clickedCard && clickedCard.isClicked === true) {
       if (currentScore >= bestScore) {
         setBestScore(currentScore);
         setCurrentScore(0);
-        resetCards(fetchedCards.data);
+        //resetCards(fetchedCards.data);
+        setGameReset(true);
       } else {
         setCurrentScore(0);
-        resetCards(fetchedCards.data);
+        setGameReset(true);
       }
     }
   }
