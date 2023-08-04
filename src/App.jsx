@@ -4,15 +4,17 @@ import Scoreboard from './components/Scoreboard/Scoreboard.jsx';
 import { useState, useEffect } from 'react';
 import { shuffleArray } from './utils/utils.js';
 import './App.css';
+
 function App() {
   const [fetchedCards, setFetchedCards] = useState();
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
 
   const [isGameReset, setGameReset] = useState(false);
+
   // component renders first, then useEffect runs, setting the fetchedCards
   useEffect(() => {
-    fetch('https://api.giphy.com/v1/gifs/search?api_key=7xX8bIMXFLppXyF7Kk7gpIM95xIHnZQK&q=adventure time&limit=10', {
+    fetch('https://api.giphy.com/v1/gifs/search?api_key=7xX8bIMXFLppXyF7Kk7gpIM95xIHnZQK&q=adventure time&limit=18', {
       mode: 'cors',
     })
       .then((res) => res.json())
