@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react-refresh/only-export-components */
 import './Scoreboard.css';
+import PropTypes from 'prop-types';
 
 function Scoreboard({ currentScore, bestScore }) {
   return (
@@ -10,5 +10,10 @@ function Scoreboard({ currentScore, bestScore }) {
     </div>
   );
 }
+
+Scoreboard.propTypes = {
+  currentScore: PropTypes.number,
+  bestScore: PropTypes.number,
+};
 
 export default Scoreboard;

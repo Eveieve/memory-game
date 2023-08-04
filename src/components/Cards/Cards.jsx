@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 // import cardsData from '../data/cards';
 import './cards.css';
 
 import SingleCard from '../Singlecard/SingleCard';
+import PropTypes from 'prop-types';
 
 function Cards({ cards, onClick }) {
   const renderedCards = cards.data.map((card) => (
@@ -25,4 +25,15 @@ function Cards({ cards, onClick }) {
   );
 }
 
+Cards.propTypes = {
+  cards: PropTypes.array,
+  onClick: PropTypes.function,
+};
+
+// practice defaultProps
+/*Cards.defaultProps = {
+  cards: [
+    
+  ]
+}*/
 export default Cards;

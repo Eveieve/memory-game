@@ -6,7 +6,7 @@
 .cards-container {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     background-color: pink;
     padding: 3rem;
     border-radius: 1rem;
